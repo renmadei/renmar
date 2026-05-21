@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Kamu ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #fbc2eb 0%, #a6c1ee 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            transition: all 0.5s ease;
+        }
+        h2 {
+            color: #d63384;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ffb6c1;
+            border-radius: 25px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
+        input[type="password"]:focus {
+            border-color: #d63384;
+            box-shadow: 0 0 8px rgba(214, 51, 132, 0.2);
+        }
+        button {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
+            transition: 0.3s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 117, 140, 0.6);
+        }
+        .hidden {
+            display: none;
+        }
+        .foto {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="nadiff basmalah 6.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="card" id="loginPage">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW9pZ21wY3R6NXFmbmt0Z296bXN4OHg4N3R6cmpxdHlsY3d4YnZjbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/du1Lz5w5Qnx9C/giphy.gif" class="foto" alt="Cute Icon">
+        <h2>Pintu Masuk ✨</h2>
+        <p>Masukkan password untuk melihat isi pesannya...</p>
+        <input type="password" id="passInput" placeholder="Ketik password di sini">
+        <button onclick="login_dan_putar()">Buka Sekarang</button>
+    </div>
+
+    <div class="card hidden" id="mainContent">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0NTA4M212MDNlbXo4eW9wd3Ftd3J1N3R5M3N5YWhuNWhidDZ6MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l41Yc00XqgP9jJd2E/giphy.gif" class="foto" alt="Love Icon">
+        <h2>Hai Kamu! ❤️</h2>
+        <p>Makasih ya udah mau dengerin. Jangan bosan-bosan buat selalu ada di dekatku. Kalau lagi capek, senderan aja dulu di sini, ya? Kebetulan lagunya udah aku puterin khusus buat nemenin kamu sekarang. 🥰</p>
+        <button onclick="alert('Makasih udah mampir! Stay safe ya ✨')">I Love You</button>
+    </div>
+
+    <script>
+        function login_dan_putar() {
+            var input = document.getElementById("passInput").value;
+            
+            // JIKA INGIN MENGGANTI PASSWORD, UBAH "123" DI BAWAH INI
+            var passwordBenar = "123"; 
+
+            if (input === passwordBenar) {
+                // 1. Transisi Halaman (Sembunyikan login, munculkan konten)
+                document.getElementById("loginPage").classList.add("hidden");
+                document.getElementById("mainContent").classList.remove("hidden");
+
+                // 2. Putar Musik Otomatis (Trik melewati blokir autoplay browser)
+                var musik = document.getElementById("bgMusic");
+                musik.play().catch(function(error) {
+                    console.log("Autoplay dicegah browser, tetapi harusnya aman setelah klik tombol.");
+                });
+            } else {
+                alert("Yah, passwordnya salah... Coba diingat-ingat lagi ya!");
+            }
+        }
+    </script>
+</body>
+</html>
